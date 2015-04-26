@@ -1,0 +1,58 @@
+﻿@using HousingHack.Constants
+@model HousingHack.Models.VentureDetailsModel
+           
+@{
+    ViewBag.Title = "Venture";
+    var grid = new WebGrid(source: Model.InvestmentModels);
+}
+<style type="text/css">    .centerDiv {
+        padding-left: 220px;
+    }</style>
+
+<h4><b>Listing Name : </b> @Model.ListingName <br/><br /><b>Proposed by : </b>@Model.StartedBy</h4>
+<h4><b>Listing Priced at : </b>@Model.ListingPrice</h4>
+<h4><b>Plans for the Listing : </b>@Model.Plans</h4>
+<h4><b>Initial Investment : </b>@Model.InitialInvestment% <br/><br /> <b>Total Investment Upto Now : </b>@Model.TotalInvestment%</h4>
+<br/>
+<br/>
+
+
+<div>
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+        @grid.GetHtml(tableStyle: "listing-border", headerStyle: "gridhead", footerStyle: "paging", rowStyle: "td-dark", alternatingRowStyle: "td-light",
+            columns:
+                grid.Columns(
+                    grid.Column("UserName", "User", style: "colDetails"),
+                         grid.Column("InvestmentPercentage", "Percentage", style: "colDetails")
+                    ), mode: WebGridPagerModes.Numeric
+            )}
+
+</div>
+<br/>
+<br/>
+<div style="padding-left: 240px">
+    
+    @if (AppContants.LoggedInUser.Type == "Admin")
+    {
+        using (Html.BeginForm("ChangeStatus", "Venture", FormMethod.Post))
+        {
+            @Html.Label("Status")
+            @Html.DropDownListFor(x => x.Status, Model.VentureStatusList, new {style = "width: 310px; height:30px;"})
+            @Html.HiddenFor(x => x.VentureInvestment.UserId)
+            @Html.HiddenFor(x => x.VentureInvestment.VentureId)
+            <input type="submit" id="invest" value="Change Status" />
+        }
+    }
+    else
+    {
+        using (Html.BeginForm("AddInvestment", "Venture", FormMethod.Post))
+        {
+            @Html.Label("Investment Percentage")
+            @Html.EditorFor(x => x.VentureInvestment.InvestmentPercentage)
+            @Html.HiddenFor(x => x.VentureInvestment.UserId)
+            @Html.HiddenFor(x => x.VentureInvestment.VentureId)
+            <input type="submit" id="invest" value="Invest" />
+        }
+    }
+</div>

@@ -1,0 +1,18 @@
+﻿@model HousingHack.Models.ListingDetailsModel
+
+@{
+    ViewBag.Title = "Venture";
+}
+<style type="text/css">
+    .centerDiv {
+        padding-left: 220px;
+    }
+</style>
+
+<h4><b>Listing Name : </b> @Model.PropertyName <br /><br /><b>Seller : </b>@Model.ListedBy</h4>
+<h4><b>Listing Priced at : </b>@Model.EstimatedCost</h4>
+<h4><b>Availability Type : </b>@Model.AvailabilityType <br /><br /> <b>Locality : </b>@Model.Locality</h4>
+<h4><b>Description : </b>@Model.PropertyDescription</h4>
+<h4><b>Contact Number : </b>@Model.ContactNumber</h4>
+<br />
+<br />

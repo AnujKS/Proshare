@@ -1,0 +1,53 @@
+﻿@model HousingHack.Models.ListingsModel
+@{
+    ViewBag.Title = "AddListing";
+}
+
+<h2>AddListing</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Registration Form</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.PropertyName)
+                @Html.TextBoxFor(m => m.PropertyName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.PropertyType)
+                @Html.DropDownListFor(m => m.PropertyType,Model.PropertyTypeList,new{style="width: 310px; height:30px;"})
+            </li>
+            <li>
+                @Html.LabelFor(m => m.EstimatedCost)
+                @Html.TextBoxFor(m => m.EstimatedCost)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.AvailabilityType)
+                @Html.DropDownListFor(m => m.AvailabilityType, Model.AvailabilityTypeList, new { style = "width: 310px; height:30px;" })
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Locality)
+                @Html.TextBoxFor(m => m.Locality)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.PhotoLinks)
+                @Html.TextBoxFor(m => m.PhotoLinks)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.PropertyDescription)
+                @Html.TextBoxFor(m => m.PropertyDescription)
+            </li>
+       
+
+        </ol>
+        <input type="submit" value="AddListing" />
+    </fieldset>
+}
+
+
+
+

@@ -1,0 +1,35 @@
+﻿@model HousingHack.Models.VentureModel
+@{
+    ViewBag.Title = "AddVenture";
+}
+
+<h2>AddVenture</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Registration Form</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.VentureType)
+                @Html.TextBoxFor(m => m.VentureType)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.TotalInvestment)
+                @Html.TextBoxFor(m => m.TotalInvestment)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.StartingInvestment)
+                @Html.TextBoxFor(m => m.StartingInvestment)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Plans)
+                @Html.TextBoxFor(m => m.Plans)
+            </li>
+        </ol>
+        <input type="submit" value="AddVenture" />
+    </fieldset>
+}

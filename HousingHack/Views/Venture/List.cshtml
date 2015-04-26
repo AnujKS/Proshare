@@ -1,0 +1,51 @@
+﻿@model List<HousingHack.Models.VentureModel>
+
+@{
+    ViewBag.Title = "Venture";
+    var grid = new WebGrid(source: Model);
+    var listingId = Model.ToArray().First().ListingId;
+}
+
+@{
+    if (!Model.ToArray().First().IsMyVenture && !Model.ToArray().First().IsMyInvestment)
+    {
+        <h2>Ventures available for the Listing</h2>
+        <h3> Listing Name : 
+            @Model.ToArray().First().ListingName 
+        </h3>
+        <h5 style=" float: none; text-align: right; padding-right: 200px;">@Html.ActionLink("Add Venture", "AddVentures", "Venture", new { listingId = listingId}, null)</h5>
+        <br/>
+    }
+    else if (Model.ToArray().First().IsMyVenture)
+    {
+        <h2>My Ventures</h2>
+        <br/><br/>
+    }
+    else if (Model.ToArray().First().IsMyInvestment)
+    {
+        <h2>My Investments</h2>
+        <br/><br/>
+    }
+}
+
+<div >
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+        @grid.GetHtml(tableStyle: "listing-border", headerStyle: "gridhead", footerStyle: "paging", rowStyle: "td-dark", alternatingRowStyle: "td-light",
+    columns:
+        grid.Columns(
+                      grid.Column("VentureType", "Venture Type", style: "colName"),
+                      grid.Column("StartingInvestment", "Initial Investment", style: "colName"),
+                      grid.Column("TotalInvestment", "Total Investment", style: "colName"),
+                      grid.Column("InitiatedBy", "Started by", style: "colName"),
+                      grid.Column("Status", "Status", style: "colName"),
+                      grid.Column(format: @<text>@Html.ActionLink("Details", "Details", "Venture", new { ventureId = item.Id }, null)</text>, header: "")
+            //grid.Column(format: @<text>@Html.ActionLink("Pull Contacts", "PullContacts", new { id = item.Id })</text>, header: "")
+            @*
+                grid.Column(format:@<text>@Html.ActionLink("Edit", "EditItem", new { id = item.Id })</text>, header: "")
+            *@
+                  ), mode: WebGridPagerModes.Numeric
+                                        )
+    }
+
+</div>

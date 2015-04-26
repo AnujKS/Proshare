@@ -1,0 +1,10 @@
+D:\VisualStudioProjects\HousingHack.Handler\obj\Debug\HousingHack.Handler.csprojResolveAssemblyReference.cache
+D:\VisualStudioProjects\HousingHack.Handler\bin\Debug\HousingHack.Handler.dll.config
+D:\VisualStudioProjects\HousingHack.Handler\bin\Debug\HousingHack.Handler.dll
+D:\VisualStudioProjects\HousingHack.Handler\bin\Debug\HousingHack.Handler.pdb
+D:\VisualStudioProjects\HousingHack.Handler\bin\Debug\EntityFramework.dll
+D:\VisualStudioProjects\HousingHack.Handler\bin\Debug\EntityFramework.xml
+D:\VisualStudioProjects\HousingHack.Handler\obj\Debug\HousingHack.Handler.dll
+D:\VisualStudioProjects\HousingHack.Handler\obj\Debug\HousingHack.Handler.pdb
+D:\VisualStudioProjects\HousingHack.Handler\bin\Debug\System.Web.Mvc.dll
+D:\VisualStudioProjects\HousingHack.Handler\bin\Debug\System.Web.Mvc.xml

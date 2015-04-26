@@ -1,0 +1,33 @@
+﻿@using System.Web.UI.WebControls
+@model HousingHack.Models.VentureModel
+@{
+    ViewBag.Title = "AddVenture";
+}
+
+<h2>AddVenture</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Registration Form</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.VentureType)
+                @Html.DropDownListFor(m => m.VentureType, Model.VentureTypeList, new { style = "width: 310px; height:30px;" })
+            </li>
+            <li>
+                @Html.LabelFor(m => m.StartingInvestment)
+                @Html.TextBoxFor(m => m.StartingInvestment,new {placeholder="Enter in Lakh"})
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Plans)
+                @Html.TextBoxFor(m => m.Plans,new {placeholder="Enter the Plan"})
+            </li>
+                @Html.HiddenFor(m=>m.ListingId)
+        </ol>
+        <input type="submit" value="AddVentures" />
+    </fieldset>
+}

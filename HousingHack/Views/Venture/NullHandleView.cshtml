@@ -1,0 +1,15 @@
+﻿@model HousingHack.Constants.NullHandlerModel
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<h2>
+    @Model.Message
+</h2>
+@{
+    if (Model.Message.Contains("Venture"))
+    {
+        <h5 style="float: none; text-align: right; padding-right: 200px;">@Html.ActionLink("Add Venture", "AddVentures", "Venture", new {listingId = Model.listingId}, null)</h5>
+    }
+}
